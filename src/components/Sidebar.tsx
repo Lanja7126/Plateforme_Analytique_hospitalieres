@@ -10,7 +10,7 @@ import {
 } from "lucide-react";
 import { useAuthStore } from "../store/authStore";
 import type { Role } from "../types/auth.types";
-import logo from "../assets/logo_ephm.png";
+import logo from "../assets/logo_ephm.svg";
 
 interface ElementMenu {
   to: string;
