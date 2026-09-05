@@ -1,0 +1,51 @@
+<svg
+  viewBox="0 0 400 440"
+  width="400"
+  height="440"
+  xmlns="http://www.w3.org/2000/svg"
+  role="img"
+  aria-label="Logo EPHM — Évaluation des Performances Hospitalières à Madagascar"
+>
+  <defs>
+    <linearGradient id="badgeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1A3A8F" />
+      <stop offset="100%" stop-color="#2E7DD4" />
+    </linearGradient>
+    <linearGradient id="goldGrad" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#E09000" />
+      <stop offset="100%" stop-color="#F9C74F" />
+    </linearGradient>
+    <filter id="shadow" x="-12%" y="-8%" width="124%" height="124%">
+      <feDropShadow dx="0" dy="6" stdDeviation="14" flood-color="#1A3A8F" flood-opacity="0.22" />
+    </filter>
+    <clipPath id="badgeClip">
+      <rect x="78" y="62" width="244" height="244" rx="46" />
+    </clipPath>
+  </defs>
+
+  <!-- Background -->
+  <rect width="400" height="440" fill="#F0F4FA" />
+
+  <!-- Badge -->
+  <rect x="78" y="62" width="244" height="244" rx="46" fill="url(#badgeGrad)" filter="url(#shadow)" />
+  <rect x="78" y="62" width="244" height="120" rx="46" fill="white" opacity="0.06" clip-path="url(#badgeClip)" />
+
+  <!-- Medical cross -->
+  <rect x="112" y="165" width="176" height="50" rx="9" fill="white" />
+  <rect x="175" y="102" width="50" height="176" rx="9" fill="white" />
+
+  <!-- Performance bars (gold) -->
+  <rect x="252" y="162" width="13" height="25" rx="3.5" fill="url(#goldGrad)" />
+  <rect x="268" y="148" width="13" height="39" rx="3.5" fill="url(#goldGrad)" />
+  <rect x="284" y="131" width="13" height="56" rx="3.5" fill="url(#goldGrad)" />
+  <polyline points="284,128 290,120 298,128" fill="none" stroke="#F9C74F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+
+  <!-- Madagascar island -->
+  <g clip-path="url(#badgeClip)" opacity="0.18">
+    <ellipse cx="116" cy="272" rx="11" ry="25" fill="white" transform="rotate(-8, 116, 272)" />
+    <ellipse cx="120" cy="257" rx="7" ry="9" fill="white" transform="rotate(-8, 120, 257)" />
+  </g>
+
+  <!-- Badge border -->
+  <rect x="78" y="62" width="244" height="244" rx="46" fill="none" stroke="white" stroke-width="1.5" opacity="0.2" />
+</svg>
