@@ -164,12 +164,14 @@ export default function Sidebar({ children }: { children?: React.ReactNode }) {
         onChange={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
       />
       
-      {/* CONTENU PRINCIPAL */}
+      {/* =====================================
+          CONTENU PRINCIPAL
+      ====================================== */}
       <div 
         className="drawer-content flex flex-col"
         style={{ backgroundColor: EPHM_DARK.background.page }}
       >
-        {/* BARRE DE NAVIGATION */}
+        {/* BARRE DE NAVIGATION - AVATAR UNIQUEMENT */}
         <nav 
           className="navbar w-full border-b shadow-sm"
           style={{ 
@@ -178,6 +180,7 @@ export default function Sidebar({ children }: { children?: React.ReactNode }) {
           }}
         >
           <div className="flex-1 flex items-center gap-3">
+            {/* Menu hamburger mobile */}
             <label
               htmlFor="my-drawer-4"
               aria-label="open sidebar"
@@ -188,53 +191,67 @@ export default function Sidebar({ children }: { children?: React.ReactNode }) {
               <Menu className="size-5" />
             </label>
             
+            {/* Bouton de réduction du sidebar (desktop) */}
             <div 
-              className="hidden lg:flex items-center gap-2"
+              className="hidden lg:flex items-center gap-2 p-1.5 rounded-lg hover:bg-white/5 transition-colors"
               onClick={toggleCollapse}
-              style={{ cursor: "pointer" }}
+              style={{ 
+                cursor: "pointer",
+                color: EPHM_DARK.neutral.gray400,
+              }}
             >
               {isCollapsed ? (
-                <ChevronRight className="size-4" style={{ color: EPHM_DARK.neutral.gray400 }} />
+                <ChevronRight className="size-4" />
               ) : (
-                <ChevronLeft className="size-4" style={{ color: EPHM_DARK.neutral.gray400 }} />
+                <ChevronLeft className="size-4" />
               )}
             </div>
 
-            <div className="flex items-center gap-2 font-semibold" style={{ color: EPHM_DARK.neutral.gray800 }}>
-              <img src={logo} alt="Logo EPHM" className="w-8 h-8 mr-2" />
-              <span className={isCollapsed ? "hidden lg:inline" : "inline"}>
-                EPHM
-              </span>
-              <span className="hidden lg:inline text-sm font-normal" style={{ color: EPHM_DARK.neutral.gray400 }}>
-                Performances Hospitalières
-              </span>
-            </div>
+            {/* Titre de la page (sans logo) */}
+            <span className="text-sm font-medium" style={{ color: EPHM_DARK.neutral.gray600 }}>
+              Plateforme Analytique Hospitalière
+            </span>
           </div>
 
-          <div className="flex items-center gap-2">
+          {/* AVATAR UTILISATEUR DANS LA NAVBAR */}
+          <div className="flex items-center gap-3">
             <button 
               className="btn btn-ghost btn-sm btn-square"
               style={{ color: EPHM_DARK.neutral.gray400 }}
+              title="Aide"
             >
               <HelpCircle className="size-4" />
             </button>
             <button 
               className="btn btn-ghost btn-sm btn-square"
               style={{ color: EPHM_DARK.neutral.gray400 }}
+              title="Paramètres"
             >
               <Settings className="size-4" />
             </button>
-            <div className="avatar placeholder">
-              <div 
-                className="w-8 rounded-full"
-                style={{ 
-                  backgroundColor: EPHM_DARK.primary[600],
-                  color: EPHM_DARK.neutral.white,
-                }}
-              >
-                <span className="text-xs font-medium">
-                  {utilisateur?.nom?.slice(0, 2).toUpperCase() || "U"}
-                </span>
+            
+            {/* Avatar avec informations utilisateur */}
+            <div className="flex items-center gap-2 pl-2 border-l" style={{ borderColor: EPHM_DARK.neutral.gray200 }}>
+              <div className="avatar placeholder">
+                <div 
+                  className="w-8 rounded-full"
+                  style={{ 
+                    backgroundColor: EPHM_DARK.primary[600],
+                    color: EPHM_DARK.neutral.white,
+                  }}
+                >
+                  <span className="text-xs font-medium">
+                    {utilisateur?.nom?.slice(0, 2).toUpperCase() || "U"}
+                  </span>
+                </div>
+              </div>
+              <div className="hidden sm:block">
+                <p className="text-sm font-medium leading-tight" style={{ color: EPHM_DARK.neutral.gray700 }}>
+                  {utilisateur?.nom || "Utilisateur"}
+                </p>
+                <p className="text-xs leading-tight" style={{ color: EPHM_DARK.neutral.gray400 }}>
+                  {utilisateur?.role || "user"}
+                </p>
               </div>
             </div>
           </div>
@@ -244,7 +261,9 @@ export default function Sidebar({ children }: { children?: React.ReactNode }) {
         <div className="p-4 lg:p-6 flex-1">{children}</div>
       </div>
 
-      {/* SIDEBAR */}
+      {/* =====================================
+          SIDEBAR - LOGO UNIQUEMENT
+      ====================================== */}
       <div className="drawer-side z-50">
         <label
           htmlFor="my-drawer-4"
@@ -259,7 +278,7 @@ export default function Sidebar({ children }: { children?: React.ReactNode }) {
             borderRight: `1px solid ${EPHM_DARK.neutral.gray200}`,
           }}
         >
-          {/* LOGO */}
+          {/* LOGO DANS LE SIDEBAR */}
           <div 
             className={`flex items-center gap-3 p-4 border-b ${isCollapsed ? "justify-center" : ""}`}
             style={{ borderColor: EPHM_DARK.neutral.gray200 }}
@@ -271,13 +290,13 @@ export default function Sidebar({ children }: { children?: React.ReactNode }) {
                   EPHM
                 </h1>
                 <p className="text-xs" style={{ color: EPHM_DARK.neutral.gray400 }}>
-                  Madagascar
+                  Performances Hospitalières
                 </p>
               </div>
             )}
           </div>
 
-          {/* MENU - VERSION CORRIGÉE ✅ */}
+          {/* MENU DE NAVIGATION */}
           <ul className="menu menu-sm flex-1 gap-1 p-3">
             {elementsVisibles.map((el) => (
               <li key={el.to}>
@@ -300,7 +319,6 @@ export default function Sidebar({ children }: { children?: React.ReactNode }) {
                     }
                   }}
                 >
-                  {/* ✅ Utilisation de la fonction children de NavLink */}
                   {({ isActive }) => (
                     <>
                       {el.icon}
@@ -320,57 +338,20 @@ export default function Sidebar({ children }: { children?: React.ReactNode }) {
             ))}
           </ul>
 
-          {/* SECTION UTILISATEUR */}
+          {/* BOUTON DE DÉCONNEXION DANS LE SIDEBAR */}
           <div 
             className="border-t p-3"
             style={{ borderColor: EPHM_DARK.neutral.gray200 }}
           >
-            <div 
-              className={`flex items-center gap-3 px-2 py-2 rounded-lg ${
-                isCollapsed ? "justify-center" : ""
-              }`}
-              style={{ backgroundColor: EPHM_DARK.neutral.gray50 }}
-            >
-              <div className="avatar placeholder">
-                <div 
-                  className="w-9 rounded-full"
-                  style={{ 
-                    backgroundColor: EPHM_DARK.primary[600],
-                    color: EPHM_DARK.neutral.white,
-                  }}
-                >
-                  <span className="text-sm font-medium">
-                    {utilisateur?.nom?.slice(0, 2).toUpperCase() || "U"}
-                  </span>
-                </div>
-              </div>
-              {!isCollapsed && (
-                <div className="flex-1 min-w-0">
-                  <p className="text-sm font-medium truncate" style={{ color: EPHM_DARK.neutral.gray700 }}>
-                    {utilisateur?.nom || "Utilisateur"}
-                  </p>
-                  <p className="text-xs truncate" style={{ color: EPHM_DARK.neutral.gray400 }}>
-                    {utilisateur?.email || "email@example.com"}
-                  </p>
-                  <span 
-                    className="badge badge-xs mt-0.5"
-                    style={{
-                      backgroundColor: utilisateur?.role === "admin" ? EPHM_DARK.primary[600] : EPHM_DARK.neutral.gray300,
-                      color: utilisateur?.role === "admin" ? EPHM_DARK.neutral.white : EPHM_DARK.neutral.gray700,
-                    }}
-                  >
-                    {utilisateur?.role || "user"}
-                  </span>
-                </div>
-              )}
-            </div>
-
             <button
               onClick={gererDeconnexion}
-              className={`btn btn-ghost btn-sm w-full mt-2 ${
+              className={`btn btn-ghost btn-sm w-full ${
                 isCollapsed ? "justify-center" : "justify-start"
               } gap-2`}
-              style={{ color: EPHM_DARK.neutral.gray500 }}
+              style={{ 
+                color: EPHM_DARK.neutral.gray500,
+                backgroundColor: "transparent",
+              }}
               title={isCollapsed ? "Déconnexion" : undefined}
             >
               <LogOut className="size-4" />
