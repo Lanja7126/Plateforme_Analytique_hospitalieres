@@ -98,7 +98,7 @@ export default function Sidebar({ children }: { children?: React.ReactNode }) {
               <path d="M14 10l2 2l-2 2"></path>
             </svg>
           </label>
-          <div className="px-4 font-semibold">
+          <div className="px-4 font-semibold inline-flex items-center gap-2">
             <img src={logo} alt="Logo" className="w-8 h-8 mr-2" /> Plateforme
             Analytique Hospitalière
           </div>

@@ -1,2 +1,69 @@
 @import "tailwindcss";
 @plugin "daisyui";
+@plugin "daisyui/theme" {
+  name: "ephm-light";
+  default: true;
+  prefersdark: false;
+  color-scheme: light;
+
+  /* Vert émeraude - Primary */
+  --ephm-primary-50: oklch(96% 0.02 185);
+  --ephm-primary-100: oklch(88% 0.04 185);
+  --ephm-primary-200: oklch(78% 0.08 185);
+  --ephm-primary-300: oklch(65% 0.14 185);
+  --ephm-primary-400: oklch(56% 0.17 185);
+  --ephm-primary-500: oklch(48% 0.18 190); /* #008080 */
+  --ephm-primary-600: oklch(42% 0.16 190);
+  --ephm-primary-700: oklch(35% 0.14 190);
+  --ephm-primary-800: oklch(26% 0.1 190);
+  --ephm-primary-900: oklch(18% 0.06 190);
+
+  /* Or - Accent */
+  --ephm-gold-50: oklch(96% 0.03 85);
+  --ephm-gold-100: oklch(90% 0.06 85);
+  --ephm-gold-200: oklch(82% 0.09 85);
+  --ephm-gold-300: oklch(75% 0.12 85);
+  --ephm-gold-400: oklch(72% 0.12 85); /* #c9a84c */
+  --ephm-gold-500: oklch(65% 0.14 85);
+  --ephm-gold-600: oklch(55% 0.14 85);
+  --ephm-gold-700: oklch(45% 0.12 85);
+  --ephm-gold-800: oklch(35% 0.1 85);
+  --ephm-gold-900: oklch(25% 0.08 85);
+
+  /* Rouge corail - Error */
+  --ephm-coral-50: oklch(96% 0.03 25);
+  --ephm-coral-100: oklch(88% 0.06 25);
+  --ephm-coral-200: oklch(78% 0.1 25);
+  --ephm-coral-300: oklch(68% 0.14 25);
+  --ephm-coral-400: oklch(62% 0.16 25);
+  --ephm-coral-500: oklch(58% 0.18 25); /* #c95a4a */
+  --ephm-coral-600: oklch(50% 0.18 25);
+  --ephm-coral-700: oklch(42% 0.16 25);
+  --ephm-coral-800: oklch(34% 0.14 25);
+  --ephm-coral-900: oklch(26% 0.1 25);
+}
+
+@plugin "daisyui/theme" {
+  name: "ephm-dark";
+  default: false;
+  prefersdark: true;
+  color-scheme: dark;
+
+  /* Version sombre */
+  --color-base-100: oklch(15% 0.02 180); /* #0d1a18 - presque noir */
+  --color-base-200: oklch(20% 0.02 180); /* #1f3330 */
+  --color-base-300: oklch(28% 0.03 180); /* #354a47 */
+  --color-base-content: oklch(90% 0.01 180); /* gris clair */
+
+  --color-primary: oklch(55% 0.16 190); /* teal plus lumineux */
+  --color-primary-content: oklch(98% 0.01 180);
+
+  --color-secondary: oklch(68% 0.14 185); /* teal clair */
+  --color-secondary-content: oklch(98% 0.01 180);
+
+  --color-accent: oklch(75% 0.12 85); /* or lumineux */
+  --color-accent-content: oklch(15% 0.02 85);
+
+  --color-neutral: oklch(35% 0.02 180);
+  --color-neutral-content: oklch(90% 0.01 180);
+}
