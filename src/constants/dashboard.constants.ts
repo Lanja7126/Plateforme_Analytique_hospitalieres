@@ -40,3 +40,39 @@ export const COORDONNEES_REGIONS: Record<string, [number, number]> = {
 };
 
 export const CENTRE_MADAGASCAR: [number, number] = [-19.0, 46.8];
+
+/**
+ * Correspondance entre les noms utilisés par l'API
+ * et les noms NAME_2 du fichier GADM.
+ */
+export const MAPPING_REGIONS_GEOJSON: Record<string, string> = {
+  Diana: "Diana",
+  Sava: "Sava",
+
+  Analanjirofo: "Analanjirofo",
+  Atsinanana: "Atsinanana",
+  Alaotra_Mangoro: "Alaotra-Mangoro",
+
+  Analamanga: "Analamanga",
+  Itasy: "Itasy",
+  Vakinankaratra: "Vakinankaratra",
+
+  Bongolava: "Bongolava",
+  Betsiboka: "Betsiboka",
+  Melaky: "Melaky",
+  Boeny: "Boeny",
+  Sofia: "Sofia",
+
+  Amoron_i_Mania: "Amoron'imania",
+  Matsiatra_Ambony: "Hautematsiatra",
+  Ihorombe: "Ihorombe",
+
+  Vatovavy: "Vatovavy",
+  Fitovinany: "Fitovinany",
+  Atsimo_Atsinanana: "Atsimo-Atsinana",
+
+  Menabe: "Menabe",
+  Atsimo_Andrefana: "Atsimo-Andrefana",
+  Androy: "Androy",
+  Anosy: "Anosy",
+};
