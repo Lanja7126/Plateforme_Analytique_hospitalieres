@@ -78,4 +78,6 @@ export interface MetaCategorielle {
 export interface ResultatPrediction {
   proba_haut_risque: number;
   igph: number;
+  cluster: number;
+  categorie: string;
 }

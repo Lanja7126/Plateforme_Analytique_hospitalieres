@@ -5,6 +5,7 @@ import toast from "react-hot-toast";
 import { schemaRapportBrut, type FormRapportBrutInput, type FormRapportBrut } from "../../schemas/rapport.schema";
 import { getMetaCategorielle } from "../../api/stats.api";
 import { predire } from "../../api/predictions.api";
+import { COULEURS_CATEGORIES } from "../../constants/dashboard.constants";
 import ChampSelectOuTexte from "../../components/ChampSelectOuTexte";
 import Jauge from "../../components/Jauge";
 
@@ -108,7 +109,7 @@ export default function Prediction() {
 
       {mutation.data && (
         <div className="card border border-base-300 bg-base-100">
-          <div className="card-body flex-row flex-wrap justify-around gap-8">
+          <div className="card-body flex-row flex-wrap items-center justify-around gap-8">
             <Jauge
               valeur={mutation.data.proba_haut_risque * 100}
               label={mutation.data.proba_haut_risque >= 0.5 ? "Haut risque" : "Risque maîtrisé"}
@@ -120,6 +121,19 @@ export default function Prediction() {
               couleur="#0F766E"
               afficheValeur={mutation.data.igph.toFixed(3)}
             />
+            <div className="flex flex-col items-center gap-2">
+              <span
+                className="badge badge-lg"
+                style={{
+                  color: COULEURS_CATEGORIES[mutation.data.categorie],
+                  backgroundColor: `${COULEURS_CATEGORIES[mutation.data.categorie]}18`,
+                  borderColor: COULEURS_CATEGORIES[mutation.data.categorie],
+                }}
+              >
+                {mutation.data.categorie}
+              </span>
+              <p className="text-sm font-medium">Catégorie K-Means (cluster {mutation.data.cluster})</p>
+            </div>
           </div>
         </div>
       )}
