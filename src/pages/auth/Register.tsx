@@ -1,6 +1,7 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Link, useNavigate } from "react-router-dom";
+import { useWatch } from "react-hook-form";
 import toast from "react-hot-toast";
 import { useState } from "react";
 import {
@@ -80,14 +81,18 @@ export default function Register() {
   const {
     register,
     handleSubmit,
-    watch,
+    control,
     formState: { errors },
   } = useForm<FormInscription>({
     resolver: zodResolver(schemaInscription),
     mode: "onChange",
   });
 
-  const motDePasse = watch("motDePasse");
+  const motDePasse = useWatch({
+    control,
+    name: "motDePasse",
+    defaultValue: "",
+  });
 
   const criteresMotDePasse = {
     longueur: motDePasse && motDePasse.length >= 8,

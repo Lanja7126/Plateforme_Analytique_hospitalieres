@@ -123,6 +123,9 @@ const getInitialCollapsedState = (): boolean => {
   return false;
 };
 
+// ============================================================
+// COMPOSANT SIDEBAR
+// ============================================================
 export default function Sidebar({ children }: { children?: React.ReactNode }) {
   const navigate = useNavigate();
   const utilisateur = useAuthStore((s) => s.utilisateur);
@@ -274,50 +277,47 @@ export default function Sidebar({ children }: { children?: React.ReactNode }) {
             )}
           </div>
 
-          {/* MENU */}
+          {/* MENU - VERSION CORRIGÉE ✅ */}
           <ul className="menu menu-sm flex-1 gap-1 p-3">
-            {elementsVisibles.map((el) => {
-              const isActive = (match: any) => match?.isActive || false;
-              
-              return (
-                <li key={el.to}>
-                  <NavLink
-                    to={el.to}
-                    end={el.end}
-                    className={({ isActive }) =>
-                      `flex items-center gap-3 px-3 py-2.5 rounded-lg transition-all ${
-                        isActive ? "menu-active" : ""
-                      } ${isCollapsed ? "justify-center" : ""}`
+            {elementsVisibles.map((el) => (
+              <li key={el.to}>
+                <NavLink
+                  to={el.to}
+                  end={el.end}
+                  className={({ isActive }) =>
+                    `flex items-center gap-3 px-3 py-2.5 rounded-lg transition-all ${
+                      isActive ? "menu-active" : ""
+                    } ${isCollapsed ? "justify-center" : ""}`
+                  }
+                  style={({ isActive }) => ({
+                    backgroundColor: isActive ? EPHM_DARK.primary[600] : "transparent",
+                    color: isActive ? EPHM_DARK.neutral.white : EPHM_DARK.neutral.gray500,
+                  })}
+                  title={isCollapsed ? el.label : undefined}
+                  onClick={() => {
+                    if (window.innerWidth < 1024) {
+                      setIsMobileMenuOpen(false);
                     }
-                    style={({ isActive }) => ({
-                      backgroundColor: isActive ? EPHM_DARK.primary[600] : "transparent",
-                      color: isActive ? EPHM_DARK.neutral.white : EPHM_DARK.neutral.gray500,
-                    })}
-                    title={isCollapsed ? el.label : undefined}
-                    onClick={() => {
-                      if (window.innerWidth < 1024) {
-                        setIsMobileMenuOpen(false);
-                      }
-                    }}
-                  >
-                    {({ isActive }) => (
-                      <>
-                        {el.icon}
-                        {!isCollapsed && (
-                          <span className="flex-1 text-sm">{el.label}</span>
-                        )}
-                        {!isCollapsed && isActive && (
-                          <span 
-                            className="w-1.5 h-1.5 rounded-full"
-                            style={{ backgroundColor: EPHM_DARK.neutral.white }}
-                          />
-                        )}
-                      </>
-                    )}
-                  </NavLink>
-                </li>
-              );
-            })}
+                  }}
+                >
+                  {/* ✅ Utilisation de la fonction children de NavLink */}
+                  {({ isActive }) => (
+                    <>
+                      {el.icon}
+                      {!isCollapsed && (
+                        <span className="flex-1 text-sm">{el.label}</span>
+                      )}
+                      {!isCollapsed && isActive && (
+                        <span 
+                          className="w-1.5 h-1.5 rounded-full"
+                          style={{ backgroundColor: EPHM_DARK.neutral.white }}
+                        />
+                      )}
+                    </>
+                  )}
+                </NavLink>
+              </li>
+            ))}
           </ul>
 
           {/* SECTION UTILISATEUR */}
